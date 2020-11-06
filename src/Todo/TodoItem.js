@@ -27,6 +27,7 @@ function TodoItem({ todo, index, onChange }) {
         // onClick={() => {
         //   removeTodo(todo.id);
         // }}
+        // onClick={() => console.log("delete todo")}
         onClick={removeTodo.bind(null, todo.id)}
       >
         &times;
