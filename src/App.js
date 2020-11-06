@@ -9,9 +9,9 @@ const AddTodo = React.lazy(() => import("./Todo/AddTodo"));
 
 function App() {
   const [todos, setTodos] = React.useState([
-    { id: 1, completed: false, text: "buy milk" },
-    { id: 2, completed: true, text: "buy honey" },
-    { id: 3, completed: false, text: "buy bun" },
+    { id: 1, completed: false, title: "buy milk" },
+    { id: 2, completed: true, title: "buy honey" },
+    { id: 3, completed: false, title: "buy bun" },
   ]);
   const [loading, setLoading] = React.useState(true);
 
@@ -41,13 +41,13 @@ function App() {
     setTodos(todos.filter((todo) => todo.id !== id));
   }
 
-  function addTodo(text) {
+  function addTodo(title) {
     setTodos(
       todos.concat([
         {
           id: Date.now(),
           completed: false,
-          text,
+          title,
         },
       ])
     );

@@ -20,7 +20,7 @@ function TodoItem({ todo, index, onChange }) {
             onChange(todo.id);
           }}
         />
-        <strong>{index + 1}</strong> &nbsp; {todo.text}
+        <strong>{index + 1}</strong> &nbsp; {todo.title}
       </span>
       <button
         className="btn-delete"
