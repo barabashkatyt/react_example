@@ -9,7 +9,6 @@ function TodoItem({ todo, index, onChange }) {
   if (todo.completed) {
     classes.push("done");
   }
-  console.log("todo", todo);
   return (
     <li>
       <span className={classes.join(" ")}>
