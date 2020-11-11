@@ -1,6 +1,5 @@
 import React from "react";
 import TodoItem from "./../Todo/TodoItem";
-import "./../index.css";
 
 export default {
   title: "TodoItem",
