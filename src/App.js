@@ -8,11 +8,7 @@ import Modal from "./Modal/Modal";
 const AddTodo = React.lazy(() => import("./Todo/AddTodo"));
 
 function App() {
-  const [todos, setTodos] = React.useState([
-    // { id: 1, completed: false, title: "buy milk" },
-    // { id: 2, completed: true, title: "buy honey" },
-    // { id: 3, completed: false, title: "buy bun" },
-  ]);
+  const [todos, setTodos] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
   useEffect(() => {
@@ -54,7 +50,7 @@ function App() {
   }
 
   return (
-    <Context.Provider value={{ removeTodo: removeTodo }}>
+    <Context.Provider value={{ removeTodo }}>
       <div className="App">
         <div className="wrapper">
           <h1>Todos</h1>

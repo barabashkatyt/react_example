@@ -1,7 +1,7 @@
 import Context from "../src/context";
 
 function removeTodo(id) {
-  setTodos(todos.filter((todo) => todo.id !== id));
+  console.log("remove todo");
 }
 export const decorators = [
   (Story) => (
