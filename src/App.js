@@ -12,7 +12,7 @@ function App() {
   const [loading, setLoading] = React.useState(true);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos?_limit=5")
+    fetch("https://jsonplaceholder.typicode.com/todos?_limit=7")
       .then((response) => response.json())
       .then((todos) => {
         setTimeout(() => {

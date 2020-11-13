@@ -21,3 +21,16 @@ Done.args = {
   index: 1,
   onChange: false,
 };
+const tooLongTitle =
+  "Too Long Title Too Long Title TooLong Title Too Long Title Too Long Title Too Long Title Too Long Title Too Long Too Long Title Too Long Title TooLong Title Too Long Title Too Long Title Too Long Title Too Long Title Too Long Too Long Title Too Long Title TooLong Title Too Long Title Too Long Title Too Long Title Too Long Title Too Long ";
+
+export const TooLongTodo = Template.bind({});
+TooLongTodo.args = {
+  todo: {
+    id: 1,
+    completed: true,
+    title: tooLongTitle,
+  },
+  index: 1,
+  onChange: false,
+};
