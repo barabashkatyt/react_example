@@ -10,8 +10,8 @@ function TodoItem({ todo, index, onChange }) {
     classes.push("done");
   }
   return (
-    <li>
-      <span className={classes.join(" ")} style={{ display: "flex" }}>
+    <li className="list-group-item todo">
+      <span className={classes.join(" ")}>
         <input
           type="checkbox"
           checked={todo.completed}
@@ -19,15 +19,16 @@ function TodoItem({ todo, index, onChange }) {
             onChange(todo.id);
           }}
         />
-        <strong>{index + 1}</strong> &nbsp; {todo.title}
+        &nbsp;
+        <strong>{todo.title}</strong>
+        <small>{new Date().toLocaleDateString()}</small>
       </span>
       <button
-        className="btn-delete"
-        // onClick={() => {
-        //   removeTodo(todo.id);
-        // }}
-        // onClick={() => console.log("delete todo")}
-        onClick={removeTodo.bind(null, todo.id)}
+        type="button"
+        class="btn btn-outline-danger btn-sm"
+        onClick={() => {
+          removeTodo(todo.id);
+        }}
       >
         &times;
       </button>
