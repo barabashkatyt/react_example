@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AlertContext } from "../context/alert/alertContext";
 
-export const Alert = ({ alert }) => {
-  if (!alert) {
+export const Alert = () => {
+  const { alert, hide } = useContext(AlertContext);
+  if (!alert.visible) {
     return null;
   }
 
@@ -12,7 +14,7 @@ export const Alert = ({ alert }) => {
       } alert-dismissible fade show`}
     >
       <strong>Please pay attantion </strong> {alert.text}
-      <button type="button" className="close" aria-label="Close">
+      <button type="button" onClick={hide} className="close" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
