@@ -28,9 +28,13 @@ export const FirebaseState = ({ children }) => {
     };
 
     try {
-      const res = await axios.get(`${url}/todos.json`, todo);
-      console.log(todo);
-      console.log("Add todo ", res.data);
+      const res = await axios.post(`${url}/todos.json`, todo);
+      const payload = {
+        ...todo,
+        id: res.data.name,
+      };
+
+      dispatch({ type: ADD_TODO, payload });
     } catch (e) {
       throw new Error(e.message);
     }

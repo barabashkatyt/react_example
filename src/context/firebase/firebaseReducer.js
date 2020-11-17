@@ -1,4 +1,4 @@
-import { SHOW_LOADER, ADD_TODO, FETCH_TODOS, REMOVE_TODO } from "../types";
+import { ADD_TODO, FETCH_TODOS, REMOVE_TODO, SHOW_LOADER } from "../types";
 
 const handlers = {
   [SHOW_LOADER]: (state) => ({ ...state, loading: true }),
@@ -6,7 +6,11 @@ const handlers = {
     ...state,
     todos: [...state.todos, payload],
   }),
-  [FETCH_TODOS]: (state, { payload }) => ({ ...state, todos: payload }),
+  [FETCH_TODOS]: (state, { payload }) => ({
+    ...state,
+    todos: payload,
+    loading: false,
+  }),
   [REMOVE_TODO]: (state, { payload }) => ({
     ...state,
     todos: state.todos.filter((todo) => todo.id !== payload),
