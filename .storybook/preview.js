@@ -1,14 +1,20 @@
-import Context from "../src/context";
 import "./../src/index";
+import { FirebaseContext } from "./../src/context/firebase/firebaseContext";
 
-function removeTodo(id) {
-  console.log("remove todo");
+function fetchTodos() {
+  console.log("fetch");
 }
+function removeTodos() {
+  console.log("remove");
+}
+
 export const decorators = [
   (Story) => (
-    <Context.Provider value={{ removeTodo }}>
+    <FirebaseContext.Provider
+      value={{ loading: false, todos: [], fetchTodos, removeTodos }}
+    >
       <Story />
-    </Context.Provider>
+    </FirebaseContext.Provider>
   ),
 ];
 export const parameters = {

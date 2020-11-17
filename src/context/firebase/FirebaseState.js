@@ -23,6 +23,8 @@ export const FirebaseState = ({ children }) => {
       return { ...res.data[key], id: key };
     });
 
+    console.log(res.data);
+
     dispatch({
       type: FETCH_TODOS,
       payload,
