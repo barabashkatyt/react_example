@@ -18,7 +18,15 @@ export const FirebaseState = ({ children }) => {
   const fetchTodos = async () => {
     showLoader();
     const res = await axios.get(`${url}/todos.json`);
-    console.log("fetch todos", res.data);
+
+    const payload = Object.keys(res.data || []).map((key) => {
+      return { ...res.data[key], id: key };
+    });
+
+    dispatch({
+      type: FETCH_TODOS,
+      payload,
+    });
   };
 
   const addTodo = async (title) => {

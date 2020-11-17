@@ -5,11 +5,9 @@ import { Loader } from "../components/Loader";
 import { Todos } from "../components/Todos";
 
 export const Home = () => {
-  const { loading, todos, fetchTodos } = useContext(FirebaseContext);
-
-  // const notes = new Array(3)
-  //   .fill("")
-  //   .map((_, i) => ({ id: i, title: `Todo ${i + 1}` }));
+  const { loading, todos, fetchTodos, removeTodo } = useContext(
+    FirebaseContext
+  );
 
   useEffect(() => {
     fetchTodos();
@@ -20,7 +18,7 @@ export const Home = () => {
     <Fragment>
       <Form />
       <hr />
-      {loading ? <Loader /> : <Todos todos={todos} />}
+      {loading ? <Loader /> : <Todos todos={todos} onRemove={removeTodo} />}
     </Fragment>
   );
 };
