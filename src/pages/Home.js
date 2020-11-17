@@ -1,66 +1,26 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useContext, useEffect } from "react";
 import { Form } from "./../components/Form";
-import TodoList from "./../Todo/TodoList";
-import Loader from "./../Todo/Loader";
-import Context from "./../context";
+import { FirebaseContext } from "../context/firebase/firebaseContext";
+import { Loader } from "../components/Loader";
+import { Todos } from "../components/Todos";
 
-const AddTodo = React.lazy(() => import("./../Todo/AddTodo"));
+export const Home = () => {
+  const { loading, todos, fetchTodos } = useContext(FirebaseContext);
 
-function Home() {
-  const [todos, setTodos] = useState([]);
-  const [loading, setloading] = useState(true);
+  // const notes = new Array(3)
+  //   .fill("")
+  //   .map((_, i) => ({ id: i, title: `Todo ${i + 1}` }));
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos?_limit=7")
-      .then((response) => response.json())
-      .then((todos) => {
-        setTimeout(() => {
-          setTodos(todos);
-          // setLoading(false);
-        }, 2000);
-      });
+    fetchTodos();
+    // eslint-disable-next-line
   }, []);
 
-  function toggleTodo(id) {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === id) {
-          todo.completed = !todo.completed;
-        }
-        return todo;
-      })
-    );
-  }
-
-  function removeTodo(id) {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  }
-
-  function addTodo(title) {
-    setTodos(
-      todos.concat([
-        {
-          id: Date.now(),
-          completed: false,
-          title,
-        },
-      ])
-    );
-  }
   return (
-    <Context.Provider value={{ removeTodo }}>
-      <Fragment>
-        <Form />
-        <hr />
-        {loading && <Loader />}
-        {todos.length ? (
-          <TodoList todos={todos} onToggle={toggleTodo} />
-        ) : loading ? null : (
-          <p>No todos</p>
-        )}
-      </Fragment>
-    </Context.Provider>
+    <Fragment>
+      <Form />
+      <hr />
+      {loading ? <Loader /> : <Todos todos={todos} />}
+    </Fragment>
   );
-}
-
-export default Home;
+};

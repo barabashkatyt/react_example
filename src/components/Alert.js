@@ -13,7 +13,7 @@ export const Alert = () => {
         alert.type || "warning"
       } alert-dismissible fade show`}
     >
-      <strong>Please pay attantion </strong> {alert.text}
+      <strong>! </strong> {alert.text}
       <button type="button" onClick={hide} className="close" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
